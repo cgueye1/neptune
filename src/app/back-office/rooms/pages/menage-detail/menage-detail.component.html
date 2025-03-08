@@ -1,0 +1,142 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Chambre N° 303</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="'/rooms/menages'"
+          >Gestion des ménages</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Détails Chambre N° 303
+      </li>
+    </ol>
+  </nav>
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card card__user1 h-100">
+        <div class="card-header">Détail de la chambre</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span class="fw-medium">Heure de Checkout</span>
+              <span>2024-10-10 - 11:00</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Client</span>
+              <span>Moussa Ndiaye</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Type de chambre</span>
+              <span>Double</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Chambre</span>
+              <span>N° 303</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card card__user1 h-100">
+        <div class="card-header">Traitement</div>
+        <div class="card-body">
+          <div class="row g-3">
+            <h6>Femme de Ménage Assignée</h6>
+            <select class="form-select">
+              <option value="">Sélectionner</option>
+              <option value="Maman Fall" selected>Maman Fall</option>
+              <option value="Sophie Ndiaye" disabled>Sophie Ndiaye</option>
+              <option value="Boury Sy">Boury Sy</option>
+            </select>
+            <h6>Status de la chambre</h6>
+            <div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="statut"
+                  id="DONE"
+                  value="DONE"
+                  [(ngModel)]="selectedStatus"
+                  (change)="onStatusChange('DONE')"
+                />
+                <label class="form-check-label" for="DONE"
+                  >Marquer comme Fait</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="statut"
+                  id="NOTDONE"
+                  value="NOTDONE"
+                  [(ngModel)]="selectedStatus"
+                  (change)="onStatusChange('NOTDONE')"
+                />
+                <label class="form-check-label" for="NOTDONE"
+                  >Marquer comme Pas Fait</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="statut"
+                  id="INSPECT"
+                  value="INSPECT"
+                  [(ngModel)]="selectedStatus"
+                  (change)="onStatusChange('INSPECT')"
+                />
+                <label class="form-check-label" for="INSPECT"
+                  >Marquer comme Inspecté</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="statut"
+                  id="NOTINSPECT"
+                  value="NOTINSPECT"
+                  [(ngModel)]="selectedStatus"
+                  (change)="onStatusChange('NOTINSPECT')"
+                />
+                <label class="form-check-label" for="NOTINSPECT"
+                  >Marquer comme Pas Inspecté</label
+                >
+              </div>
+            </div>
+          </div>
+            <div class="row g-4 mt-3">
+        <div class="col-lg-6">
+                    <button
+              class="button button-primary w-100"
+              type="button"
+              (click)="onSave()"
+            >
+             Mettre à jour
+            </button>
+        </div>
+         <div class="col-lg-6">
+            <button
+              class="button button-outline-primary w-100"
+              type="button"
+              (click)="onReset()"
+            >
+              Annuler
+            </button>
+        </div>
+      </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

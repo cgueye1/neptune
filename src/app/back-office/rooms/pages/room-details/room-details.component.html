@@ -1,0 +1,144 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Détails de la chambre N° 303</h3>
+    <div class="dflex-start">
+      <button class="button button-primary" (click)="editRoom(001)">
+        Modifier
+      </button>
+      <button class="button button-light" (click)="onDeleteRoom(001)">
+        Supprimer
+      </button>
+    </div>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="'/rooms/list'"
+          >Gestion des chambres</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Chambre N° 303</li>
+    </ol>
+  </nav>
+
+  <div class="row g-4">
+    <div class="col-lg-5">
+      <!-- Image principale -->
+      <div class="card mb-3 bg-white border-0">
+        <img
+          class="card-img-big img-fluid"
+          [src]="selectedImage || singleRoom.picture"
+          alt="Card image cap"
+          id="product-detail"
+        />
+      </div>
+
+      <!-- Miniatures du carousel -->
+      <div>
+        <div class="row pe-4">
+          <!-- Bouton précédent -->
+          <div class="col-1 align-self-center">
+            <button class="fab-button" role="button" data-bs-slide="prev">
+              <i class="material-icons">chevron_left</i>
+            </button>
+          </div>
+
+          <!-- Carousel -->
+          <div class="col-10">
+            <div class="carousel-item-thumbs">
+              <ng-container
+                *ngFor="let image of singleRoom.pictures; let i = index"
+              >
+                <a href="javascript:void(0)" (click)="showImage(image)">
+                  <img
+                    class="img-fluid img-thumbnail"
+                    [src]="image"
+                    alt="Thumbnail Image {{ i + 1 }}"
+                    [class.active]="selectedImage === image"
+                  />
+                </a>
+              </ng-container>
+            </div>
+          </div>
+
+          <!-- Bouton suivant -->
+          <div class="col-1">
+            <button class="fab-button" role="button" data-bs-slide="next">
+              <i class="material-icons">chevron_right</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="card card__user1">
+        <div class="card-header dflex-between">
+          <span> Caractéristiques et Equipement</span>
+          <span class="status-lot" [appStatus]="singleRoom.status"></span>
+        </div>
+        <div class="card-body">
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias
+            necessitatibus molestias illum quae. Voluptas modi corrupti
+            possimus, minima incidunt accusantium iusto voluptatem tenetur
+            dolores. Rerum modi sed doloremque soluta unde.
+          </p>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span class="fw-medium dflex-start">
+                <i class="material-icons fs-5">bedroom_parent</i>
+                Grand lit double ou 2 lits simples + 1 petit lit banquette
+                (90x190)
+              </span>
+              <span><i class="material-icons text-success">check</i></span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium dflex-start">
+                <i class="material-icons fs-5">wifi</i>
+                Wifi gratuit
+              </span>
+              <span><i class="material-icons text-success">check</i></span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium dflex-start">
+                <i class="material-icons fs-5">tv</i>
+                Télévision
+              </span>
+              <span><i class="material-icons text-success">check</i></span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium dflex-start">
+                <i class="material-icons fs-5">ac_unit</i>
+                Climatisation
+              </span>
+              <span><i class="material-icons text-success">check</i></span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium dflex-start">
+                <i class="material-icons fs-5">phone</i>
+                Téléphone
+              </span>
+              <span><i class="material-icons text-success">check</i></span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium dflex-start">
+                <i class="material-icons fs-5">archive</i>
+                Coffre-fort
+              </span>
+              <span><i class="material-icons text-success">check</i></span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium dflex-start">
+                <i class="material-icons fs-5">kitchen</i>
+                Mini-réfrigérateur
+              </span>
+              <span><i class="material-icons text-success">check</i></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

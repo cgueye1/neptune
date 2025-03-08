@@ -1,0 +1,90 @@
+<div id="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <section id="content-wrapper">
+    <div id="navbar-wrapper">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a (click)="activeToggle()" id="sidebar-toggle">
+              <i class="material-icons">{{ menuIconName }}</i>
+            </a>
+
+            <div class="user-wrapper dropdown">
+              <div class="d-flex align-items-center my-3 user_wrapper">
+                <div class="user-avatar me-2">
+                  <img
+                    src="assets/images/user-default.webp"
+                    width="60"
+                    class="rounded-pill img-fluid"
+                    alt="Mon compte"
+                  />
+                </div>
+                <span class="user-content">
+                  <span>Mamadou Thioune</span>
+                  <span>Super Admin</span>
+                </span>
+              </div>
+              <div class="dropdown">
+                <button
+                  class="fab-button"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-lg-end">
+                  <li>
+                    <a
+                      class="dropdown-item d-flex align-items-center"
+                      href="javascript:(0)"
+                      (click)="onViewCompte()"
+                    >
+                      <i class="material-icons">person</i>
+                      <span class="ms-2">Mon compte</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item d-flex align-items-center"
+                      href="javascript:(0)"
+                      (click)="logOut()"
+                    >
+                      <i class="material-icons">logout</i>
+                      <span class="ms-2">Déconnexion</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasSidebar"
+      aria-labelledby="offcanvasSidebarLabel"
+    >
+      <div class="offcanvas-header">
+        <h3 class="offcanvas-title" id="offcanvasSidebarLabel">Menu</h3>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="sidebar-brand">
+          <img [src]="logoUrl" alt="E.IMMO" class="img-fluid d-block mx-auto" width="220px">
+        </div>
+        <app-menu [menuItems]="menuItems" [menuState]="menuState"></app-menu>
+      </div>
+    </div>
+
+      <router-outlet></router-outlet>
+  </section>
+</div>

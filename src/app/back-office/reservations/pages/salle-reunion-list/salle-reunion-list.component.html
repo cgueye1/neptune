@@ -1,0 +1,139 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Salles de Réunion</h3>
+    <div class="dflex-start">
+      <button class="button button-primary" (click)="onAdd()">
+      Réserver une salle
+    </button>
+    </div>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="['/reservations']" routerLinkActive="router-link-active" >Gestion des réservations</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Liste des réservations
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Search Form -->
+ <div class="search__table dflex-between mb-4">
+    <div class="dflex-start">
+      <div class="search">
+        <div class="search-box">
+          <input
+            class="search-box__input"
+            type="text"
+            placeholder="Rechercher"
+          />
+          <button class="search-box__button" aria-label="Search">
+            <i class="material-icons">search</i>
+          </button>
+        </div>
+      </div>
+      <select class="form-select w-auto py-2">
+        <option value="">Filtrer par statut</option>
+        <option value="1">Disponible</option>
+        <option value="2">Occupé</option>
+        <option value="3">Réservé</option>
+      </select>
+    </div>
+    <!-- Toggle Buttons -->
+    <div
+      class="btn-group btn-group_custom"
+      role="group"
+      aria-label="Basic example"
+    >
+      <button
+        type="button"
+        class="button"
+        [class.active]="activeView === 'list'"
+        (click)="setView('list')"
+      >
+        <i class="material-icons material-symbols-outlined">list</i>
+      </button>
+      <button
+        type="button"
+        class="button"
+        [class.active]="activeView === 'calendar'"
+        (click)="setView('calendar')"
+      >
+        <i class="material-icons material-symbols-outlined">event</i>
+      </button>
+    </div>
+  </div>
+
+ <ng-container *ngIf="activeView === 'calendar'">
+   <div class="table-responsive bg-white p-3 rounded-3">
+<full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+ </ng-container>
+<ng-container *ngIf="activeView === 'list'">
+    <div class="table-responsive bg-white p-3 rounded-3">
+    <table class="table table__sm">
+      <thead class="table-light">
+        <th scope="col">ID</th>
+        <th scope="col">Nom du salle</th>
+        <th scope="col">Date</th>
+        <th scope="col">Durée</th>
+        <th scope="col">Services</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of reservations">
+          <td>{{ item.id }}</td>
+          <td>{{ item.room }}</td>
+          <td>{{ item.date }}</td>
+          <td>{{ item.duree }}</td>
+          <td>{{ item.services }}</td>
+          <td>
+             <span class="status-lot" [appStatus]="item.status"></span>
+          </td>
+          <td>
+            <div class="actions">
+              <button
+                title="Modifier la réservation"
+                class="btn-action"
+                (click)="editSalle(item.room)"
+              >
+                <i class="material-icons text-success">edit</i>
+              </button>
+              <button
+                title="Annuler la réservation"
+                class="btn-action"
+                (click)="cancelSalle(item.id)"
+              >
+                <i class="material-icons text-danger">delete</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      <div class="dflex-between align-items-center">
+      <select
+        class="form-select form-select-sm"
+        style="width: auto;height: 30px;"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshData()"
+      >
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="30">30</option>
+      </select>
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshData()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+</ng-container>
+</div>

@@ -1,0 +1,134 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Edit de réservation</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="'/reservations/list'"
+          >Gestion des réservations</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Réservation N°11
+      </li>
+    </ol>
+  </nav>
+
+  <div class="container_page">
+    <!-- header -->
+    <div class="container_page-header">
+      <h3 class="subtitle-bo">Informations générales</h3>
+    </div>
+
+    <form>
+      <div class="row g-4 mt-2">
+        <!-- Client Information -->
+        <div class="col-lg-4">
+          <label class="form-label">Prénom du client</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Nom du client</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Téléphone du client</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-12">
+          <label class="form-label">Demandes spéciales</label>
+          <textarea
+            class="form-control"
+            rows="3"
+            placeholder="Par exemple, près de l'ascenseur, étage élevé, vue sur la mer"
+          ></textarea>
+        </div>
+
+        <div class="col-lg-4">
+          <label class="form-label">Type de chambre</label>
+          <select class="form-select">
+            <option value="" selected disabled>
+              Sélectionner un type de chambre
+            </option>
+            <option *ngFor="let room of roomTypes" [value]="room">
+              {{ room }}
+            </option>
+          </select>
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Date d'Arrivée</label>
+          <input type="date" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Date de Départ</label>
+          <input type="date" class="form-control" placeholder="Saisir" />
+        </div>
+
+        <div class="col-lg-12">
+          <label class="form-label">Chambres disponibles</label>
+          <ul class="rooms">
+            <li
+              *ngFor="let room of rooms"
+              [class.active]="room === selectedRoom"
+              (click)="selectRoom(room)"
+            >
+              <i class="material-icons">bedroom_parent</i>
+              <span> {{ room.name }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-12">
+          <label class="form-label">Statut du paiement</label>
+          <div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="statut"
+                id="PAID"
+                value="PAID"
+                checked
+              />
+              <label class="form-check-label" for="PAID">Payé</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="statut"
+                id="UNPAID"
+                value="UNPAID"
+              />
+              <label class="form-check-label" for="UNPAID">Impayée</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="dflex-start mt-4">
+            <button
+              class="button button-primary"
+              type="button"
+              (click)="onSave()"
+            >
+              Mettre à jour
+            </button>
+            <button
+              class="button button-outline-primary"
+              type="button"
+              (click)="onReset()"
+            >
+              Annuler
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

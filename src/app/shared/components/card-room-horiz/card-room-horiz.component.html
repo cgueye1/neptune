@@ -1,0 +1,38 @@
+<div class="card mb-3" (click)="onCardClick()">
+  <div class="row g-0">
+    <div class="col-lg-3">
+      <figure id="img-responsive">
+        <img
+          [src]="data.image"
+          class="img-fluid rounded-start"
+          [alt]="data.title"
+        />
+        <span class="status-lot" [appStatus]="data.status"></span>
+      </figure>
+    </div>
+    <div class="col-lg-9">
+      <div class="card-body">
+        <div class="dflex-between">
+          <h3 class="card-title title-property">{{ data.title }}</h3>
+          <h3 class="card-title price-property">{{ data.price }}</h3>
+        </div>
+
+         <ul class="list-unstyled dflex-start">
+          <li class="dflex-center text-black-50">
+            <i class="material-icons">group</i>
+            <span>3 adultes</span>
+          </li>
+           <li class="dflex-center text-black-50">
+            <i class="material-icons">crop</i>
+            <span>85 m²</span>
+          </li>
+          <li class="dflex-center text-black-50">
+            <i class="material-icons">bedroom_parent</i>
+            <span>1 x Lit(s) king-size</span>
+          </li>
+        </ul>
+        <p class="card-text description-property">{{ data.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

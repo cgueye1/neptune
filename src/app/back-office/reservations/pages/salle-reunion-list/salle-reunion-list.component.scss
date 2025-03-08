@@ -1,0 +1,71 @@
+/* Base styles for the event content */
+.fc-event-custom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  word-wrap: break-word;
+  padding: 0.5em;
+}
+
+.fc-event-title {
+  font-weight: bold;
+  font-size: 1em;
+  margin-bottom: 0.2em;
+}
+
+.fc-event-status {
+  font-size: 0.9em;
+  color: #ffffff;
+  margin-bottom: 0.2em;
+}
+
+.fc-event-services
+ul.fc-event-services {
+  font-size: 0.85em;
+  color: #f8f9fa;
+  padding-left: 1em;
+  margin-top: 0.3em;
+}
+
+.fc-event-services li {
+  list-style-type: disc;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .fc-event-title {
+    font-size: 0.9em; /* Reduce font size on smaller screens */
+  }
+
+  .fc-event-status {
+    font-size: 0.8em;
+  }
+
+  .fc-event-services {
+    font-size: 0.75em;
+  }
+}
+
+@media (max-width: 480px) {
+  .fc-event-custom-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.3em; /* Reduce padding on very small screens */
+  }
+
+  .fc-event-title {
+    font-size: 0.85em;
+  }
+
+  .fc-event-status {
+    font-size: 0.75em;
+  }
+
+  .fc-event-services {
+    font-size: 0.7em;
+  }
+
+  .fc-event-services li {
+    margin-bottom: 0.1em; /* Add some space between list items */
+  }
+}

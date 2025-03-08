@@ -1,0 +1,97 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Gestion des plaintes</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)">Gestion des plaintes</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Liste des plaintes
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Search Form -->
+  <div class="row row-cols-lg-5 row-cols-sm-3 g-3 mb-4">
+    <div class="col">
+      <input
+        type="search"
+        class="form-control form-control-sm"
+        placeholder="Rechercher par nom"
+      />
+    </div>
+    <div class="col">
+      <select class="form-select form-select-sm">
+        <option value="">Filtrer par type</option>
+        <option value="Entretien ménager">Entretien ménager</option>
+        <option value="Facturation">Facturation</option>
+      </select>
+    </div>
+    <div class="col">
+      <select class="form-select form-select-sm">
+        <option value="">Filtrer par statut</option>
+        <option value="INPROGRESS">En cours</option>
+        <option value="PENDING">En attente</option>
+        <option value="RESOLVED">Résolu</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive bg-white p-3 rounded-3">
+    <table class="table table__sm">
+      <thead class="table-light">
+        <th scope="col">ID Plainte</th>
+        <th scope="col">Nom du client</th>
+        <th scope="col">Date de soumission</th>
+        <th scope="col">Type de plainte</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of complaints">
+          <td>{{ item.complaintId }}</td>
+          <td>{{ item.firstName }} {{ item.lastName }}</td>
+          <td>{{ item.dateSubmitted }}</td>
+          <td>{{ item.complaintType }}</td>
+          <td>
+           <span class="status-lot" [appStatus]="item.status"></span>
+          </td>
+          <td>
+            <div class="actions">
+              <button
+                title="Afficher les détails"
+                class="btn-action"
+                (click)="viewComplaint(item.complaintId)"
+              >
+                <i class="material-icons text-secondary">visibility</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="dflex-between align-items-center">
+      <select
+        class="form-select form-select-sm"
+        style="width: auto;height: 30px;"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshData()"
+      >
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="30">30</option>
+      </select>
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshData()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="card h-100" (click)="onCardClick()">
+  <figure id="img-responsive">
+    <img
+      [src]="data.image"
+      class="img-fluid rounded-start"
+      [alt]="data.title"
+    />
+    <div class="status-lot" [appStatus]="data.status"></div>
+  </figure>
+
+  <div class="card-body">
+    <h3 class="card-title title-property">{{ data.title }}</h3>
+    <h3 class="card-title price-property mb-3">{{ data.price }}</h3>
+
+    <p class="card-text description-property">{{ data.description }}</p>
+  </div>
+</div>

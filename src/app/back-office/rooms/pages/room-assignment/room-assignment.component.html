@@ -1,0 +1,82 @@
+<div class="container mt-5">
+  <h2>Attribution des Chambres</h2>
+
+  <!-- Room Filters -->
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <label for="roomType" class="form-label">Type de Chambre</label>
+      <select
+        id="roomType"
+        formControlName="roomType"
+        class="form-select"
+        (change)="filterRooms()"
+      >
+        <option value="" disabled selected>-- Type de Chambre --</option>
+        <option *ngFor="let roomType of roomTypes" [value]="roomType">{{ roomType }}</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label for="occupancy" class="form-label">Occupation</label>
+      <input
+        type="number"
+        id="occupancy"
+        formControlName="occupancy"
+        class="form-control"
+        placeholder="Nombre d'occupants"
+        (change)="filterRooms()"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="preferences" class="form-label">Préférences du Client</label>
+      <select
+        id="preferences"
+        formControlName="preferences"
+        class="form-select"
+        (change)="filterRooms()"
+      >
+        <option value="" disabled selected>-- Préférences --</option>
+        <option value="vueMer">Vue sur la mer</option>
+        <option value="balcon">Balcon</option>
+        <option value="procheAscenseur">Proche de l'ascenseur</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <button class="btn btn-primary mt-4 w-100" (click)="filterRooms()">Filtrer</button>
+    </div>
+  </div>
+
+  <!-- Room Availability Grid -->
+  <div class="room-grid mb-5">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Chambre</th>
+          <th *ngFor="let day of calendarDays">{{ day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of filteredRooms">
+          <td>{{ room.name }}</td>
+          <td *ngFor="let availability of room.availability">
+            <button
+              [ngClass]="{'btn-success': availability === 'Disponible', 'btn-danger': availability === 'Occupée'}"
+              [disabled]="availability !== 'Disponible'"
+              (click)="assignRoom(room)"
+            >
+              {{ availability }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Room Assignment Action -->
+  <div *ngIf="selectedRoom" class="mt-4">
+    <h4>Attribuer la chambre {{ selectedRoom.name }} à la réservation</h4>
+    <button class="btn btn-primary" (click)="confirmAssignment()">Confirmer l'Attribution</button>
+  </div>
+</div>

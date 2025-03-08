@@ -1,0 +1,87 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Salle N°1</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="'/reservations/salles-de-reunion'"
+          >Salles de Réunion</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Edit Salle N° 1
+      </li>
+    </ol>
+  </nav>
+
+  <div class="container_page">
+    <!-- header -->
+    <div class="container_page-header">
+      <h3 class="subtitle-bo">Informations générales</h3>
+    </div>
+
+    <form>
+      <div class="row g-4 mt-2">
+        <div class="col-lg-6">
+          <label class="form-label">Nom du salle <span class="fw-bold text-danger">*</span></label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-6">
+          <label class="form-label">Date <span class="fw-bold text-danger">*</span></label>
+          <input type="date" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-6">
+          <label class="form-label">Durée(h) <span class="fw-bold text-danger">*</span></label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+
+
+          <div class="col-lg-6">
+        <label class="form-label"
+          >Services additionnels <span class="fw-bold text-danger">*</span></label
+        >
+        <div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+            />
+            <label class="form-check-label">Catering</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+            />
+            <label class="form-check-label">Matériel audiovisuel</label>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="dflex-start mt-4">
+            <button
+              class="button button-primary"
+              type="button"
+              (click)="onSave()"
+            >
+             Mettre à jour
+            </button>
+            <button
+              class="button button-outline-primary"
+              type="button"
+              (click)="onReset()"
+            >
+              Annuler
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

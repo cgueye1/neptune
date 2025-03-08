@@ -1,0 +1,125 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Soumettre une plainte</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)">Gestion des plaintes</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Soumettre une plainte
+      </li>
+    </ol>
+  </nav>
+
+  <div class="container_page">
+    <form>
+      <!-- User Information -->
+      <h5>Informations utilisateur</h5>
+      <div class="row g-3">
+        <div class="col-lg-4">
+          <label class="form-label">Prénom du client</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Nom du client</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Téléphone du client</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+      </div>
+
+      <!-- Complaint Details -->
+      <h5 class="mt-4">Détails de la plainte</h5>
+      <div class="row g-3">
+        <div class="col-lg-4">
+          <label class="form-label">Sujet</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+
+        <div class="col-lg-12">
+          <label class="form-label">Description</label>
+          <textarea
+            id="description"
+            rows="5"
+            class="form-control"
+            name="description"
+            placeholder="Saisir"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Category & Priority -->
+      <h5 class="mt-4">Catégorie & Priorité</h5>
+      <div class="row g-3">
+        <div class="col-lg-4">
+          <label class="form-label">Catégorie</label>
+          <select class="form-select">
+            <option value="" selected disabled>
+              Sélectionner un catégorie
+            </option>
+            <option value="Room service">Service de chambre</option>
+            <option value="Facilities">Installations</option>
+            <option value="Staff behavior">Comportement du personnel</option>
+            <option value="Billing issues">Problèmes de facturation</option>
+            <option value="General service">Service général</option>
+          </select>
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Priorité</label>
+          <select class="form-select">
+            <option value="" selected disabled>
+              Sélectionner une priorité
+            </option>
+            <option value="Low">Faible</option>
+            <option value="Medium">Moyenne</option>
+            <option value="High">Élevée</option>
+            <option value="Urgent">Urgente</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Optional: Date and Location -->
+      <h5 class="mt-4">Date et lieu</h5>
+      <div class="row g-3">
+        <div class="col-lg-4">
+          <label class="form-label">Date de l'incident</label>
+          <input type="date" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Lieu (N° de chambre)</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Joindre un fichier (facultatif)</label>
+          <input type="file" class="form-control" placeholder="Saisir" />
+        </div>
+      </div>
+
+      <!-- actions -->
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="dflex-start mt-4">
+            <button
+              class="button button-primary"
+              type="button"
+              (click)="onSave()"
+            >
+              Soumettre la plainte
+            </button>
+            <button
+              class="button button-outline-primary"
+              type="reset"
+            >
+              Annuler
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

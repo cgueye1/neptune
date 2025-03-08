@@ -1,0 +1,109 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Nouvelle Tarification</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="['/tarifications']"
+          >Gestion des tarifs</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+         Ajouter une tarification
+      </li>
+    </ol>
+  </nav>
+
+  <div class="container_page">
+    <!-- header -->
+    <div class="container_page-header">
+      <h3 class="subtitle-bo">Informations générales</h3>
+    </div>
+
+    <form>
+     <!-- Room Type -->
+    <div class="row mt-2 mb-4">
+      <div class="col-md-6">
+        <label for="roomType" class="form-label">Type de chambre</label>
+        <select id="roomType" class="form-select" name="roomType" required>
+          <option value="" disabled selected>Choisir le type de chambre</option>
+          <option *ngFor="let roomType of roomTypes" [value]="roomType">{{ roomType }}</option>
+        </select>
+      </div>
+
+      <!-- Base Price -->
+      <div class="col-md-6">
+        <label for="basePrice" class="form-label">Prix de base (F CFA)</label>
+        <input type="number" id="basePrice" class="form-control" placeholder="Saisir" required>
+      </div>
+    </div>
+
+     <!-- Dynamic Pricing -->
+    <h5>Tarification dynamique</h5>
+    <div class="row mb-4 g-4">
+      <div class="col-md-4">
+        <label for="dayRate" class="form-label">Prix pour la journée (F CFA)</label>
+        <input type="number" id="dayRate" class="form-control" placeholder="Saisir">
+      </div>
+      <div class="col-md-4">
+        <label for="nightRate" class="form-label">Prix pour la nuit (F CFA)</label>
+        <input type="number" id="nightRate" class="form-control"  placeholder="Saisir">
+      </div>
+      <div class="col-md-4">
+        <label for="weekendRate" class="form-label">Prix de weekend (F CFA)</label>
+        <input type="number" id="weekendRate" class="form-control" placeholder="Saisir">
+      </div>
+    </div>
+
+    <!-- Seasonal Pricing -->
+    <h5>Tarification saisonnière</h5>
+    <div class="row g-4 mb-4">
+      <div class="col-md-6">
+        <label for="peakSeasonRate" class="form-label">Tarif haute saison (F CFA)</label>
+        <input type="number" id="peakSeasonRate" class="form-control" placeholder="Saisir">
+      </div>
+      <div class="col-md-6">
+        <label for="offPeakRate" class="form-label">Tarif basse saison (F CFA)</label>
+        <input type="number" id="offPeakRate" class="form-control"  placeholder="Saisir">
+      </div>
+    </div>
+
+    <!-- Discounts and Policies -->
+    <h5>Réductions et politiques</h5>
+    <div class="row g-4 mb-4">
+      <div class="col-md-6">
+        <label for="earlyBirdDiscount" class="form-label">Réduction réservation anticipée (%)</label>
+        <input type="number" id="earlyBirdDiscount" class="form-control" placeholder="Saisir">
+      </div>
+      <div class="col-md-6">
+        <label for="longStayDiscount" class="form-label">Réduction long séjour (%)</label>
+        <input type="number" id="longStayDiscount" class="form-control"  placeholder="Saisir">
+      </div>
+    </div>
+
+       <!-- Form Actions -->
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="dflex-start mt-4">
+            <button
+              class="button button-primary"
+              type="button"
+              (click)="onSave()"
+            >
+              Enregistrer les tarifs
+            </button>
+            <button
+              class="button button-outline-primary"
+              type="button"
+              (click)="onReset()"
+            >
+              Annuler
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

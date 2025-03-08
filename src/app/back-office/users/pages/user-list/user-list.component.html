@@ -1,0 +1,140 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Gestion des utilisateurs</h3>
+    <div class="dflex-start">
+      <button class="button button-primary" (click)="onAdd()">
+        Créer un utilisateur
+      </button>
+    </div>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)">Gestion des utilisateurs</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Liste des utilisateurs
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Search Form -->
+  <div class="row row-cols-lg-5 row-cols-sm-3 g-3 mb-4">
+    <div class="col">
+      <input
+        type="search"
+        class="form-control form-control-sm"
+        placeholder="Rechercher par nom"
+      />
+    </div>
+    <div class="col">
+      <select class="form-select form-select-sm">
+        <option value="">Filtrer par profil</option>
+        <option value="client">Client</option>
+        <option value="receptionist">Réceptionniste</option>
+        <option value="housekeeper">Femme de ménage</option>
+        <option value="supervisor">Superviseur</option>
+      </select>
+    </div>
+    <div class="col">
+      <select class="form-select form-select-sm">
+        <option value="">Filtrer par statut</option>
+        <option value="true">Actif</option>
+        <option value="false">Inactif</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive bg-white p-3 rounded-3">
+    <table class="table table__sm">
+      <thead class="table-light">
+        <th scope="col">ID Utilisateur</th>
+        <th scope="col">Nom complet</th>
+        <th scope="col">Email</th>
+        <th scope="col">Téléphone</th>
+        <th scope="col">Profil</th>
+        <th scope="col">Rôle</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of users">
+          <td>{{ item.userId }}</td>
+          <td>{{ item.firstName }} {{ item.lastName }}</td>
+          <td>{{ item.phone }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.profil }}</td>
+          <td>
+            <ul class="tag-list">
+              <li *ngFor="let role of formatRoles(item.roles)">
+                {{ role }}
+              </li>
+            </ul>
+          </td>
+          <td>
+             <span class="status-lot" [appStatus]="item.status"></span>
+          </td>
+          <td>
+            <div class="actions">
+              <!-- <button
+                title="Afficher les détails"
+                class="btn-action"
+                (click)="viewUser(item.userId)"
+              >
+                <i class="material-icons text-secondary">visibility</i>
+              </button> -->
+              <button
+                title="Modifier la réservation"
+                class="btn-action"
+                (click)="editUser(item.userId)"
+              >
+                <i class="material-icons text-success">edit</i>
+              </button>
+              <ng-container *ngIf="item.status === false">
+                <button
+                  type="button"
+                  class="btn-action"
+                  title="Activer l'utilisateur"
+                  (click)="toggleStatus(item)"
+                >
+                  <i class="material-icons text-green">lock_open</i>
+                </button>
+              </ng-container>
+              <ng-container *ngIf="item.status === true">
+                <button
+                  type="button"
+                  class="btn-action"
+                  title="Désactiver l'utilisateur"
+                  (click)="toggleStatus(item)"
+                >
+                  <i class="material-icons text-danger">lock</i>
+                </button>
+              </ng-container>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="dflex-between align-items-center">
+      <select
+        class="form-select form-select-sm"
+        style="width: auto;height: 30px;"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshData()"
+      >
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="30">30</option>
+      </select>
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshData()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+</div>

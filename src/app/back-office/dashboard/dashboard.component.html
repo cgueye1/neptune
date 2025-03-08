@@ -1,0 +1,65 @@
+<div class="hero-db p-3">
+  <div class="flex-row-between">
+    <h1 class="title-bo">Tableau de bord</h1>
+    <select class="form-select form-select-sm w-auto">
+      <option value="" selected>Aujourd'hui</option>
+    </select>
+  </div>
+
+ <div class="hero-db-container">
+
+  <!-- indicateurs -->
+  <div class="row g-3 hero-db-widget">
+    <div class="col-lg-3">
+      <div class="hero-gb-widget-item">
+        <h1>120</h1>
+        <p>Total de demandes</p>
+        <!-- <small>+10% depuis le mois dernier</small> -->
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="hero-gb-widget-item">
+        <h1>35</h1>
+        <p>Clients</p>
+        <!-- <small>+3% depuis le mois dernier</small> -->
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="hero-gb-widget-item">
+        <h1>65</h1>
+        <p>Chambres</p>
+        <!-- <small>+10% depuis le mois dernier</small> -->
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="hero-gb-widget-item">
+        <h1>20</h1>
+        <p>Ménages</p>
+        <!-- <small>+1% depuis le mois dernier</small> -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- graphes -->
+  <section class="pt-3">
+  <div class="row g-3">
+    <div class="col-lg-6">
+      <div class="graphe-container">
+        <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height: '360px'}"></canvasjs-chart>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="graphe-container">
+        <canvasjs-chart [options]="chartOptions2" [styles]="{width: '100%', height: '360px'}"></canvasjs-chart>
+      </div>
+    </div>
+  </div>
+  </section>
+ </div>
+</div>
+
+
+
+
+

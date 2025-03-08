@@ -1,0 +1,139 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Gestion des réservations</h3>
+    <div class="dflex-start">
+      <button class="button button-primary" (click)="onAdd()">
+      Créer une réservation
+    </button>
+    </div>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="['/reservations']" routerLinkActive="router-link-active" >Gestion des réservations</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Liste des réservations
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Search Form -->
+  <div class="row row-cols-lg-5 row-cols-sm-3 g-3 mb-4">
+    <div class="col">
+      <input
+        type="search"
+        class="form-control form-control-sm"
+        placeholder="Rechercher par client"
+      />
+    </div>
+    <div class="col">
+      <select class="form-select form-select-sm">
+        <option value="">Filtrer par type de chambre</option>
+        <option value="Simple">Simple</option>
+        <option value="Double">Double</option>
+        <option value="Suite">Suite</option>
+        <option value="Familiale">Familiale</option>
+      </select>
+    </div>
+    <div class="col">
+      <input
+        class="form-control form-control-sm"
+        placeholder="Date d'arrivée"
+        type="text"
+        onfocus="(this.type='date')"
+        onblur="(this.type='text')"
+      />
+    </div>
+    <div class="col">
+      <input
+        class="form-control form-control-sm"
+        placeholder="Date de départ"
+        type="text"
+        onfocus="(this.type='date')"
+        onblur="(this.type='text')"
+      />
+    </div>
+    <div class="col">
+      <select class="form-select form-select-sm">
+        <option value="">Filtrer par statut</option>
+        <option value="PAID">Payé</option>
+        <option value="SAVED">Enregistré</option>
+        <option value="PENDING">En attente</option>
+        <option value="CANCELED">Annulé</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive bg-white p-3 rounded-3">
+    <table class="table table__sm">
+      <thead class="table-light">
+        <th scope="col">ID réservation</th>
+        <th scope="col">Nom du client</th>
+        <th scope="col">Date d'arrivée</th>
+        <th scope="col">Date de départ</th>
+        <th scope="col">Type de chambre</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of reservations">
+          <td>{{ item.reservationId }}</td>
+          <td>{{ item.firstName }} {{ item.lastName }}</td>
+          <td>{{ item.checkInDate }}</td>
+          <td>{{ item.checkOutDate }}</td>
+          <td>{{ item.roomType }}</td>
+          <td>
+             <span class="status-lot" [appStatus]="item.status"></span>
+          </td>
+          <td>
+            <div class="actions">
+              <button
+                title="Afficher les détails"
+                class="btn-action"
+                (click)="viewReservation(item.reservationId)"
+              >
+                <i class="material-icons text-secondary">visibility</i>
+              </button>
+              <button
+                title="Modifier la réservation"
+                class="btn-action"
+                (click)="editReservation(item.reservationId)"
+              >
+                <i class="material-icons text-success">edit</i>
+              </button>
+              <button
+                title="Annuler la réservation"
+                class="btn-action"
+                (click)="cancelReservation(item.reservationId)"
+              >
+                <i class="material-icons text-danger">delete</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      <div class="dflex-between align-items-center">
+      <select
+        class="form-select form-select-sm"
+        style="width: auto;height: 30px;"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshData()"
+      >
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="30">30</option>
+      </select>
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshData()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+</div>

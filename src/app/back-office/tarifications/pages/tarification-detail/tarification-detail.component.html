@@ -1,0 +1,105 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Détails de la tarification N° 303</h3>
+    <div class="dflex-start">
+      <button class="button button-primary" (click)="editTarif(001)">
+        Modifier
+      </button>
+      <button class="button button-light" (click)="onDeleteTarif(001)">
+        Supprimer
+      </button>
+    </div>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="['/tarifications']"
+          >Gestion des tarifs</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Tarif N° 303</li>
+    </ol>
+  </nav>
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card card__user1 h-100">
+        <div class="card-header">Information générales</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span class="fw-medium">Type de chambre</span>
+              <span>Chambre standart</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Prix de base</span>
+              <span>50 000 Fcfa</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card card__user1 h-100">
+        <div class="card-header">
+          <span>Tarification dynamique</span>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item">
+              <span class="fw-medium">Prix pour la journée</span>
+              <span>50 000 Fcfa</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Prix pour la nuit</span>
+              <span>70 000 Fcfa</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Prix de weekend</span>
+              <span>80 000 Fcfa</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <div class="col-lg-6">
+      <div class="card card__user1 h-100">
+        <div class="card-header">
+          <span>Tarification saisonnière</span>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item">
+              <span class="fw-medium">Tarif haute saison</span>
+              <span>50 000 Fcfa</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Tarif basse saison</span>
+              <span>70 000 Fcfa</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <div class="col-lg-6">
+      <div class="card card__user1 h-100">
+        <div class="card-header">
+          <span>Réductions et politiques</span>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span class="fw-medium">Réduction réservation anticipée (%)</span>
+              <span>5%</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Réduction long séjour (%)</span>
+              <span>2%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Gestion des chambres</h3>
+    <button class="button button-primary" (click)="onCreate()">
+      Créer une chambre
+    </button>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)">Gestion des chambres</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Liste des chambres
+      </li>
+    </ol>
+  </nav>
+
+  <div class="search__table dflex-between mb-4">
+    <div class="dflex-start">
+      <div class="search">
+        <div class="search-box">
+          <input
+            class="search-box__input"
+            type="text"
+            placeholder="Rechercher"
+          />
+          <button class="search-box__button" aria-label="Search">
+            <i class="material-icons">search</i>
+          </button>
+        </div>
+      </div>
+      <select class="form-select w-auto py-2">
+        <option value="">Filtrer par statut</option>
+        <option value="1">Disponible</option>
+        <option value="2">Occupé</option>
+        <option value="3">Réservé</option>
+      </select>
+    </div>
+    <!-- Toggle Buttons -->
+    <div
+      class="btn-group btn-group_custom"
+      role="group"
+      aria-label="Basic example"
+    >
+      <button
+        type="button"
+        class="button"
+        [class.active]="activeView === 'list'"
+        (click)="setView('list')"
+        title="Vue liste"
+      >
+        <i class="material-icons material-symbols-outlined">list</i>
+      </button>
+      <button
+        type="button"
+        class="button"
+        [class.active]="activeView === 'grid'"
+        (click)="setView('grid')"
+         title="Vue grille"
+      >
+        <i class="material-icons material-symbols-outlined">grid_view</i>
+      </button>
+        <button
+        type="button"
+        class="button"
+        [class.active]="activeView === 'calendar'"
+        (click)="setView('calendar')"
+         title="Vue calendrier"
+      >
+        <i class="material-icons material-symbols-outlined">event</i>
+      </button>
+    </div>
+  </div>
+
+  <!-- list des biens -->
+  <div class="row gy-3" *ngIf="activeView === 'list'">
+    <div class="col-lg-12" *ngFor="let bien of bienList">
+      <app-card-room-horiz
+        [data]="bien"
+        (callback)="onView(bien)"
+      ></app-card-room-horiz>
+    </div>
+  </div>
+  <div class="row gy-3" *ngIf="activeView === 'grid'">
+    <div class="col-lg-4" *ngFor="let bien of bienList">
+      <app-card-room-vertical
+        [data]="bien"
+        (callback)="onView(bien)"
+      ></app-card-room-vertical>
+    </div>
+  </div>
+   <ng-container *ngIf="activeView === 'calendar'">
+   <div class="table-responsive bg-white p-3 rounded-3">
+<full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+ </ng-container>
+</div>

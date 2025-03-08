@@ -1,0 +1,19 @@
+<nav class="nav__menu sticky-top" [ngClass]="{'scrolled': isScrolled, 'dark-mode': isDark}" id="navbar">
+    <div class="nav__bar">
+      <div class="logo">
+        <a [routerLink]="'/accueil'">
+          <img [src]="isScrolled ? logoDark : (isDark ? logoDark : logoWhite)" alt="logo" width="220" class="img-fluid" />
+        </a>
+      </div>
+      <div class="nav__menu__btn" id="menu-btn">
+        <i class="material-icons">menu</i>
+      </div>
+    </div>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#home">Accueil</a></li>
+      <li><a href="#explore">Chambres et Suites</a></li>
+      <li><a href="#service">Offres spéciales</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn nav__btn" target="_blank" [routerLink]="'/auth/login'">Mon espace</a>
+</nav>

@@ -1,0 +1,105 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Gestion des tarifications</h3>
+     <button class="button button-primary" (click)="onAddPricing()">Ajouter une tarification</button>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)">Gestion des tarifications</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Ajouter une tarification
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Search Form -->
+  <div class="row g-3 mb-4">
+    <div class="col">
+      <input
+        type="search"
+        class="form-control form-control-sm"
+        placeholder="Rechercher"
+      />
+    </div>
+    <div class="col">
+      <select class="form-select form-select-sm">
+        <option value="">Filtrer par type de chambre</option>
+        <option value="Standard">Standard</option>
+        <option value="Suite">Suite</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive bg-white p-3 rounded-3">
+    <table class="table table__sm">
+      <thead class="table-light">
+        <th scope="col">Type de chambre</th>
+          <th scope="col">Prix de base (F CFA)</th>
+          <th scope="col">Prix jour (F CFA)</th>
+          <th scope="col">Prix nuit (F CFA)</th>
+          <th scope="col">Actions</th>
+      </thead>
+      <tbody>
+       <tr *ngFor="let pricing of pricingList">
+          <td>{{ pricing.roomType }}</td>
+          <td>{{ pricing.basePrice }}</td>
+          <td>{{ pricing.dayRate }}</td>
+          <td>{{ pricing.nightRate }}</td>
+          <td>
+             <div class="actions">
+              <button
+                title="Afficher les détails"
+                class="btn-action"
+                (click)="onViewPricing(pricing.id)"
+              >
+                <i class="material-icons text-secondary">visibility</i>
+              </button>
+              <button
+                title="Modifier la tarification"
+                class="btn-action"
+                (click)="onEditPricing(pricing.id)"
+              >
+                <i class="material-icons text-success">edit</i>
+              </button>
+              <button
+                title="Supprimer la tarification"
+                class="btn-action"
+                (click)="onDeletePricing(pricing.id)"
+              >
+                <i class="material-icons text-danger">delete</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="dflex-between align-items-center">
+      <select
+        class="form-select form-select-sm"
+        style="width: auto;height: 30px;"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshData()"
+      >
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="30">30</option>
+      </select>
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshData()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+
+   <!-- No Data Message -->
+  <div *ngIf="pricingList.length === 0" class="alert alert-info mt-3">
+    Aucune tarification disponible.
+  </div>
+</div>

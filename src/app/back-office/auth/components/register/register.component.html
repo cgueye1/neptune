@@ -1,0 +1,75 @@
+<div class="wrapper__auth">
+  <div class="container">
+    <div class="col-md-10 mx-auto">
+      <div class="row justify-content-center align-items-center g-3">
+        <div class="col-lg-5">
+          <h1 id="text-title">Inscrivez-vous pour
+          rejoindre la
+          plateforme
+</h1>
+
+          <p id="logo-text">GESTION IMMO</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="form-content">
+            <form>
+
+              <img src="assets/images/logo-app-black.svg" alt="E.IMMO" class="img-fluid" width="220">
+
+              <h2 class="title">Inscription</h2>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Prénom</label>
+                  <input class="form-control" placeholder="Saisir" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Nom</label>
+                  <input class="form-control" placeholder="Saisir" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Téléphone</label>
+                  <input class="form-control" placeholder="Saisir" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input class="form-control" type="email" placeholder="Saisir" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Adresse</label>
+                  <input class="form-control" placeholder="Saisir" />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Vous êtes ?</label>
+                  <select class="form-select">
+                    <option value="">Choisir</option>
+                    <option value="Promoteur">Promoteur</option>
+                    <option value="Réservataire">Réservataire</option>
+                  </select>
+                </div>
+
+                <div class="col-md-12">
+                  <button class="button button-primary w-100" type="button" (click)="onSubmit()">
+                    S'inscrire
+                  </button>
+                </div>
+
+                <div class="col-md-12">
+                  <p class="text-center mt-3">
+                    Vous avez déja un compte ?
+                    <a href="javascript:(0)" class="text-link" (click)="onLogin()">Se connecter</a>
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

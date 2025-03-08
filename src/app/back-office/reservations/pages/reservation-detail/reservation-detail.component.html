@@ -1,0 +1,145 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Détails de la Réservation</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="'/reservations/list'"
+          >Gestion des réservations</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Réservation N°11
+      </li>
+    </ol>
+  </nav>
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card card__user1">
+        <div class="card-header">Résumé de la réservation</div>
+        <div class="card-body">
+          <div class="dflex-start mb-3">
+            <img
+              src="assets/images/default-image.jpg"
+              class="img-fluid rounded-pill"
+              width="64px"
+              alt=""
+            />
+            <div>
+              <h6>Mamadou Diop</h6>
+              <small class="text-secondary">77 000 00 00</small>
+            </div>
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <span class="fw-medium">Départ</span>
+              <span>2024-10-10</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Arrivée</span>
+              <span>2024-10-10</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Type de chambre</span>
+              <span>Double</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Chambre</span>
+              <span>N° 303</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Prix</span>
+              <span>100 000 Fcfa</span>
+            </li>
+            <li class="list-group-item">
+              <span class="fw-medium">Statut du paiement</span>
+              <span class="status-lot" [appStatus]="'PAID'"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card card__user1">
+        <div class="card-header">Traitement de la réservation</div>
+        <div class="card-body">
+          <div class="row g-3 mb-4">
+            <div class="col-6">
+              <button
+                class="button button-primary w-100"
+                (click)="editReservation(001)"
+              >
+                Modifier la Réservation
+              </button>
+            </div>
+
+            <div class="col-6">
+              <button class="button button-light w-100">
+                Générez une facture
+              </button>
+            </div>
+          </div>
+
+          <div class="row g-3">
+            <h6>Status de la réservation</h6>
+
+            <div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="statut"
+                  id="PAID"
+                  value="PAID"
+                  [(ngModel)]="selectedStatus"
+                  (change)="onStatusChange('PAID')"
+                />
+                <label class="form-check-label" for="PAID">Payé</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="statut"
+                  id="PENDING"
+                  value="PENDING"
+                  [(ngModel)]="selectedStatus"
+                  (change)="onStatusChange('PENDING')"
+                />
+                <label class="form-check-label" for="PENDING">En attente</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="statut"
+                  id="CANCELED"
+                  value="CANCELED"
+                  [(ngModel)]="selectedStatus"
+                  (change)="onStatusChange('CANCELED')"
+                />
+                <label class="form-check-label" for="CANCELED">Annulé</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="statut"
+                  id="SAVED"
+                  value="SAVED"
+                  [(ngModel)]="selectedStatus"
+                  (change)="onStatusChange('SAVED')"
+                />
+                <label class="form-check-label" for="SAVED">Enregistré</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

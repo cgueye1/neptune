@@ -1,0 +1,16 @@
+<div class="py-3">
+  <!-- Logo Display -->
+  <div class="change__logo">
+    <img [src]="logoUrl" alt="Gestion Immo" width="150" />
+  </div>
+
+  <!-- File Input for Changing the Logo -->
+  <input type="file" accept="image/*" (change)="onLogoChange($event)" class="d-none" #logoInput id="logoInput" />
+
+  <div class="dflex-start">
+    <button class="button button-outline-primary" (click)="logoInput.click()">Changer le
+      logo</button>
+
+    <button class="button button-white" type="button" (click)="restoreLogo()">Restaurer le logo</button>
+  </div>
+</div>

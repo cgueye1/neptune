@@ -1,0 +1,71 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Nom du produit</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="'/rooms/approvisionnement'"
+          >Approvisionnement</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+       Edit produit
+      </li>
+    </ol>
+  </nav>
+
+  <div class="container_page">
+    <!-- header -->
+    <div class="container_page-header">
+      <h3 class="subtitle-bo">Informations générales</h3>
+    </div>
+
+    <form>
+      <div class="row g-4 mt-2">
+        <div class="col-lg-6">
+          <label class="form-label">Nom du produit <span class="fw-bold text-danger">*</span></label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-6">
+          <label class="form-label">Catégorie <span class="fw-bold text-danger">*</span></label>
+          <select class="form-select">
+            <option value="">Choisir</option>
+            <option value="Articles de toilette">Articles de toilette</option>
+            <option value="Linge">Linge</option>
+            <option value="Produits d'entretien">Produits d'entretien</option>
+          </select>
+        </div>
+
+        <div class="col-lg-6">
+          <label class="form-label">Quantité en stock <span class="fw-bold text-danger">*</span></label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="dflex-start mt-4">
+            <button
+              class="button button-primary"
+              type="button"
+              (click)="onSave()"
+            >
+              Mettre à jour
+            </button>
+            <button
+              class="button button-outline-primary"
+              type="button"
+              (click)="onReset()"
+            >
+              Annuler
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

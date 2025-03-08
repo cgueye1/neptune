@@ -1,0 +1,208 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Chambre N° 303</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:(0)" [routerLink]="['/rooms/list']"
+          >Gestion des chambres</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Chambre N° 303
+      </li>
+    </ol>
+  </nav>
+
+  <div class="container_page">
+    <!-- header -->
+    <div class="container_page-header">
+      <h3 class="subtitle-bo">Informations générales</h3>
+    </div>
+
+    <form>
+      <div class="row g-4 mt-2">
+        <!-- Room Number -->
+        <div class="col-lg-4">
+          <label class="form-label">Numéro de chambre</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+
+        <!-- Room Categorie -->
+        <div class="col-lg-4">
+          <label class="form-label">Catégorie de chambre</label>
+          <select id="roomCategorie" class="form-select">
+            <option value="" disabled selected>Choisir</option>
+            <option *ngFor="let room of roomCategories" [value]="room">
+              {{ room }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Room Type -->
+        <div class="col-lg-4">
+          <label class="form-label">Type de chambre</label>
+          <select id="roomType" class="form-select">
+            <option value="" disabled selected>Choisir</option>
+            <option *ngFor="let room of roomTypes" [value]="room">
+              {{ room }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Surface (m²) -->
+        <div class="col-lg-4">
+          <label class="form-label">Surface (m2)</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+
+          <!-- Maximum Occupancy for Adults -->
+        <div class="col-lg-4">
+          <label class="form-label">Nombre d'adultes</label>
+          <input type="number" class="form-control" placeholder="Saisir">
+        </div>
+
+          <!-- Maximum Occupancy for Children -->
+        <div class="col-lg-4">
+         <label class="form-label">Nombre d'enfants (0-11 ans)</label>
+          <input type="number" class="form-control" placeholder="Saisir">
+        </div>
+
+         <!-- Bed Type -->
+        <div class="col-lg-4">
+          <label class="form-label">Type de lit</label>
+          <select id="bedType" class="form-select">
+            <option value="" disabled selected>Choisir</option>
+            <option *ngFor="let bed of bedType" [value]="bed">
+              {{ bed }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Dynamic Pricing (Day/Night) -->
+        <div class="col-lg-4">
+          <label class="form-label">Prix par nuit (F CFA)</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+        <div class="col-lg-4">
+          <label class="form-label">Prix par jour (F CFA)</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+
+         <!-- Address / Location -->
+        <div class="col-lg-4">
+          <label class="form-label">Adresse</label>
+          <input type="text" class="form-control" placeholder="Saisir" />
+        </div>
+
+
+         <!-- Characteristics & Equipment -->
+        <div class="col-lg-12">
+          <label class="form-label">Caractéristiques & Équipements</label>
+          <div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="wifi"
+              />
+              <label class="form-check-label" for="wifi"> Wi-Fi gratuit </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="climatisation"
+              />
+              <label class="form-check-label" for="climatisation">
+                Climatisation
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="tv"
+              />
+              <label class="form-check-label" for="tv">
+                Télévision
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="phone"
+              />
+              <label class="form-check-label" for="phone">
+               Téléphone
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="coffre-fort"
+              />
+              <label class="form-check-label" for="coffre-fort">
+                Coffre-fort
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="mini-refrigerateur"
+              />
+              <label class="form-check-label" for="mini-refrigerateur">
+                Mini-réfrigérateur
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room Description -->
+        <div class="col-lg-12">
+          <label class="form-label">Description</label>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+
+         <!-- Image Gallery Upload -->
+        <div class="col-lg-12">
+          <label class="form-label">Galeries d'images</label>
+          <input type="file" class="form-control" multiple accept="image/*" />
+        </div>
+      </div>
+
+       <!-- Form Actions -->
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="dflex-start mt-4">
+            <button
+              class="button button-primary"
+              type="button"
+              (click)="onSave()"
+            >
+              Mettre à jour
+            </button>
+            <button
+              class="button button-outline-primary"
+              type="button"
+              (click)="onReset()"
+            >
+              Annuler
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

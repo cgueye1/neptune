@@ -1,0 +1,97 @@
+<div class="p-3">
+  <div class="flex-row-between">
+    <h3 class="title-bo">Gestion des ménages</h3>
+  </div>
+
+  <nav aria-label="breadcrumb" class="breadcrumb-bo">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a
+          href="javascript:(0)"
+          [routerLink]="['/rooms']"
+          routerLinkActive="router-link-active"
+          >Gestion des ménages</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        Liste des chambres
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Search Form -->
+  <div class="row g-3 mb-4">
+    <div class="col">
+      <input
+        type="search"
+        class="form-control form-control-sm"
+        placeholder="Rechercher par numéro de chambre"
+      />
+    </div>
+    <div class="col">
+      <select class="form-select form-select-sm">
+        <option value="">Filtrer par statut</option>
+        <option value="DONE">Fait</option>
+        <option value="NOTDONE">Pas Fait</option>
+        <option value="INSPECT">Inspecté</option>
+        <option value="NOTINSPECT">Pas Inspecté</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive bg-white p-3 rounded-3">
+    <table class="table table__sm">
+      <thead class="table-light">
+        <th scope="col">Numéro de Chambre</th>
+        <th scope="col">Heure de Checkout</th>
+        <th scope="col">Femme de Ménage Assignée</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of rooms">
+          <td>{{ room.number }}</td>
+          <td>{{ room.checkoutTime | date : "short" }}</td>
+          <td>
+            <ng-container $*ngIf="room.housekeepers else emptyHousekeepers">
+              {{ room.housekeepers.name }}
+            </ng-container>
+            <ng-template #emptyHousekeepers>
+                <span class="text-muted">Aucune femme de ménage assignée</span>
+            </ng-template>
+          </td>
+          <td><span class="status-lot" [appStatus]="room.status"></span></td>
+          <td>
+            <button
+              title="Modifier la chambre"
+              class="btn-action"
+              (click)="editRoom(room.id)"
+            >
+              <i class="material-icons text-success">edit</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="dflex-between align-items-center">
+      <select
+        class="form-select form-select-sm"
+        style="width: auto; height: 30px"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshData()"
+      >
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="30">30</option>
+      </select>
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshData()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+</div>
